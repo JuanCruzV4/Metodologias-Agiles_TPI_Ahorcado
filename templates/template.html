@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Juego del Ahorcado</h1>
+        <p><strong>Pista:</strong> {{ pista }}</p>
+        <p id="palabra_mostrada"><strong>Palabra:</strong> {{ palabra_a_mostrar }}</p>
+        <p id="intentos"><strong>Intentos restantes:</strong> {{ intentos_restantes }}</p>
+        <p id="letras_usadas"><strong>Letras usadas:</strong> {{ ", ".join(letras_usadas) }}</p>
+        
+        {% if not juego_finalizado %}
+            <form action="{{ url_for('intentar') }}" method="post">
+                <label for="letra">Introduce una letra:</label>
+                <input type="text" id="letra" name="letra" maxlength="1" required>
+                <button type="submit" id="boton_intentar">Intentar</button>
+            </form>
+        {% else %}
+            <p><strong>El juego ha terminado.</strong></p>
+            {% if palabra_a_mostrar.replace(" ", "") == palabra_adivinada %}
+                <p id='mensaje_final'><strong>¡Felicidades, has ganado!</strong></p>
+            {% else %}
+                <p id='mensaje_final'><strong>Lo siento, has perdido. La palabra era "{{ palabra_adivinada }}".</strong></p>
+            {% endif %}
+            <a href="{{ url_for('reiniciar') }}" id="reiniciar">Reiniciar</a>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

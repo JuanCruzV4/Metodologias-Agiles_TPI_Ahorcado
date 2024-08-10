@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Elige la Dificultad</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Elige la Dificultad</h1>
+        <form action="{{ url_for('iniciar_juego', nivel='facil') }}">
+            <button id="facil" type="submit">Fácil</button>
+        </form>
+        <form action="{{ url_for('iniciar_juego', nivel='media') }}">
+            <button id="media" type="submit">Media</button>
+        </form>
+        <form action="{{ url_for('iniciar_juego', nivel='dificil') }}">
+            <button id="dificil" type="submit">Difícil</button>
+        </form>
+    </div>
+</body>
+</html>
