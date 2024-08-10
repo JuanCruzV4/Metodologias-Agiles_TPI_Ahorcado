@@ -177,3 +177,5 @@ def ganar_partida(context):
     print(f"Mensaje mostrado: '{frase_mostrada}'")
     assert frase_mostrada == '¡Felicidades, has ganado!'
     time.sleep(3)
+
+
