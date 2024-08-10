@@ -17,11 +17,11 @@ def launchBrowser(context):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)
-    context.driver.get("http://127.0.0.1:5000/")
+    context.driver.get("https://metodologias-agiles-tpi-ahorcado.onrender.com")
 
 @when('Ingreso a la pagina del juego')
 def step_ingreso_pagina(context):
-    context.driver.get("http://127.0.0.1:5000/")
+    context.driver.get("https://metodologias-agiles-tpi-ahorcado.onrender.com")
     time.sleep(5)
 
 @then('el usuario elige la dificultad "{nivel}"')
@@ -50,7 +50,7 @@ def inicio_juego_con_palabra(context, palabra, pista):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)
-    context.driver.get(f"http://127.0.0.1:5000/inicio?palabra={palabra}&pista={pista}")
+    context.driver.get(f"https://metodologias-agiles-tpi-ahorcado.onrender.com/inicio?palabra={palabra}&pista={pista}")
     time.sleep(5)
 
 @when('valido la letra "{letra}"')
@@ -102,7 +102,7 @@ def inicio_juego_con_palabra_2(context, palabra, pista):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)
-    context.driver.get(f"http://127.0.0.1:5000/inicio?palabra={palabra}&pista={pista}")
+    context.driver.get(f"https://metodologias-agiles-tpi-ahorcado.onrender.com/inicio?palabra={palabra}&pista={pista}")
     time.sleep(3)
 
 @when('valido la letra "{letra}" incorrecta')
@@ -153,7 +153,7 @@ def inicio_juego_con_palabra_2(context, palabra, pista):
     options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)    
-    context.driver.get(f"http://127.0.0.1:5000/inicio?palabra={palabra}&pista={pista}")
+    context.driver.get(f"https://metodologias-agiles-tpi-ahorcado.onrender.com/inicio?palabra={palabra}&pista={pista}")
     time.sleep(3)
 
 @when('valido las letras "{letra1}" "{letra2}" "{letra3}" "{letra4}" "{letra5}" "{letra6}"')
