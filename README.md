@@ -2,5 +2,6 @@
 <a href="https://codecov.io/github/JuanCruzV4/Metodologias-Agiles_TPI_Ahorcado" > 
  <img src="https://codecov.io/github/JuanCruzV4/Metodologias-Agiles_TPI_Ahorcado/graph/badge.svg?token=XYEPGQ79WE"/> 
  </a>
+ [![Python application](https://github.com/JuanCruzV4/Metodologias-Agiles_TPI_Ahorcado/actions/workflows/python-app.yml/badge.svg)](https://github.com/JuanCruzV4/Metodologias-Agiles_TPI_Ahorcado/actions/workflows/python-app.yml)
 # Metodologias-Agiles
 Practicas de clase
