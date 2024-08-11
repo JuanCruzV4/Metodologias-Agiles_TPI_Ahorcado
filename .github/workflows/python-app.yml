@@ -24,11 +24,13 @@ jobs:
 
     - name: Install dependencies
       run: |
+        set -e
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
     - name: Lint with flake8
       run: |
+        set -e
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
@@ -36,6 +38,7 @@ jobs:
 
     - name: Test with pytest
       run: |
+        set -e
         pip install pytest-cov  # Asegúrate de que pytest-cov esté instalado
         pytest --cov=./ --cov-report xml --cov-report term
 
@@ -47,20 +50,24 @@ jobs:
 
     - name: Install Google Chrome
       run: |
+          set -e
           wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
           sudo apt install ./google-chrome-stable_current_amd64.deb
 
     - name: Download ChromeDriver
       run: |
+          set -e
           wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
           unzip chromedriver_linux64.zip
 
 
     - name: Set Permissions for ChromeDriver
       run: |
+          set -e
           chmod +x chromedriver
     - name: Start Flask Server
       run: |
+            set -e
             nohup FLASK_APP=your_flask_app.py flask run --host=0.0.0.0 --port=5000 &
     
     - name: Wait for Flask Server to start
@@ -73,6 +80,7 @@ jobs:
     - name: Run Test
       if: always()
       run: 
+          set -e
           behave -vv features
       continue-on-error: true
 
