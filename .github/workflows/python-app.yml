@@ -79,7 +79,7 @@ jobs:
 
     - name: Run Test
       run: 
-          set -e
+          set -x
           behave -vv features
   
 
