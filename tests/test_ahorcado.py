@@ -79,4 +79,25 @@ def test_juego_terminado_perdedor():
     juego.intento("x")
     juego.intento("i")
     assert juego.validar_fin_del_juego() == True
+
+def test_elegir_palabra_facil():
+    juego = Ahorcado()
+    palabra = juego.elegir_palabra(dificultad='facil')
+    assert palabra in palabras_facil  
+
+def test_elegir_palabra_media():
+    juego = Ahorcado()
+    palabra = juego.elegir_palabra(dificultad='media')
+    assert palabra in palabras_intermedio  
+
+def test_elegir_palabra_dificil():
+    juego = Ahorcado()
+    palabra = juego.elegir_palabra(dificultad='dificil')
+    assert palabra in palabras_dificil 
+
+def test_elegir_palabra_otra_dificultad():
+    juego = Ahorcado()
+    palabra = juego.elegir_palabra(dificultad='otra')
+    assert palabra in palabras_dificil  
+
     
