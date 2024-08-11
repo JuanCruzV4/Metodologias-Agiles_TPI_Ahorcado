@@ -90,4 +90,9 @@ jobs:
         files: ./coverage.xml
         flags: unittests
         name: codecov-umbrella
+
+    - name: Deploy to Render
+      if: success()  # Only run if tests were successful
+      run: |
+          echo "Deploying to Render"
           
