@@ -100,4 +100,39 @@ def test_elegir_palabra_otra_dificultad():
     palabra = juego.elegir_palabra(dificultad='otra')
     assert palabra in palabras_dificil  
 
+def test_iniciar_con_dificultad():
+    juego = Ahorcado()
+    juego.iniciar(dificultad='facil')
+    assert juego.palabra_a_adivinar in palabras_facil  
+    assert len(juego.palabra_a_mostrar) == len(juego.palabra_a_adivinar[0])  
+    assert juego.intentos_restantes == 7  
+    assert not juego.juego_finalizado  
+
+def test_iniciar_con_palabra_directa():
+    juego = Ahorcado()
+    palabra = "mate"
+    pista = "Bebida argentina por excelencia"
+    juego.iniciar(palabra=palabra, pista=pista)
+    assert juego.palabra_a_adivinar[0] == palabra 
+    assert juego.obtener_pista() == pista  
+    assert len(juego.palabra_a_mostrar) == len(palabra) 
+    assert juego.intentos_restantes == 7  
+    assert not juego.juego_finalizado  
+
+def test_obtener_pista():
+    juego = Ahorcado()
+    pista = "Bebida argentina por excelencia"
+    juego.iniciar(palabra="mate", pista=pista)
+    assert juego.obtener_pista() == pista  
+
+def test_letras_utilizadas():
+    juego = Ahorcado()
+    juego.iniciar(palabra="casa")
+    juego.intento("a")  
+    assert juego.letras_utilizadas("a") == True  
+    assert juego.letras_utilizadas("c") == False  
+
+
+
+
     
