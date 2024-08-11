@@ -78,11 +78,10 @@ jobs:
               ls -l
 
     - name: Run Test
-      if: always()
       run: 
           set -e
           behave -vv features
-      continue-on-error: true
+  
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
