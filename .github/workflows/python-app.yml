@@ -91,8 +91,12 @@ jobs:
         flags: unittests
         name: codecov-umbrella
 
-    - name: Deploy to Render
-      if: success()  # Only run if tests were successful
+    - name: Trigger Deploy on Render
+      if: success()  # Solo ejecuta este paso si los tests son exitosos
       run: |
-          echo "Deploying to Render"
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          https://api.render.com/v1/services/https://api.render.com/deploy/srv-cqru3kg8fa8c73dabsc0?key=bG-DLCkPz24/deploys
+    env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
           
