@@ -25,7 +25,10 @@ Feature: Juego de Ahorcado
       When valido las letras "a" "m" "g" "i" "c" "o"
       Then gano la partida
 
- 
+  Scenario: Perder Juego
+      Given un juego del Ahorcado con la palabra "enigma", "Misterio o situación difícil de entender" (Perder Juego)
+      When valido las letras "e" "h" "z" "s" "t" "r" "o" "q" hasta no tener intentos
+      Then pierde la partida
 
 
 

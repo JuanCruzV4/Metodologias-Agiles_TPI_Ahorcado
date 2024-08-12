@@ -178,3 +178,36 @@ def ganar_partida(context):
     assert frase_mostrada == '¡Felicidades, has ganado!'
     time.sleep(3)
 
+@given('un juego del Ahorcado con la palabra "{palabra}", "{pista}" (Perder Juego)')
+def inicio_juego_con_palabra_3(context, palabra, pista):
+    #service = Service(r"C:\Users\juanc\Desktop\Metodologias Agiles\TPI\Metodologias-Agiles\TP-Ahorcado\features\steps\chromedriver.exe")
+    #context.driver = webdriver.Chrome(service=service)
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    context.driver = webdriver.Chrome(options=options)    
+    context.driver.get(f"https://metodologias-agiles-tpi-ahorcado.onrender.com/inicio?palabra={palabra}&pista={pista}")
+    time.sleep(3)
+
+@when('valido las letras "{letra1}" "{letra2}" "{letra3}" "{letra4}" "{letra5}" "{letra6}" "{letra7}" "{letra8}" hasta no tener intentos')
+def ingreso_una_letra_In_Co(context, letra1, letra2 ,letra3 ,letra4 ,letra5 ,letra6, letra7, letra8 ):
+    letras = [letra1, letra2, letra3, letra4, letra5, letra6, letra7, letra8]
+    for letra in letras:
+        input_letra = context.driver.find_element(By.ID, "letra")
+        submit_button = context.driver.find_element(By.XPATH, f"//*[@id='boton_intentar']")
+        input_letra.clear()
+        input_letra.send_keys(letra)
+        submit_button.click()
+        time.sleep(1)
+    time.sleep(2)
+
+@then('pierde la partida')
+def perder_partida(context):
+    WebDriverWait(context.driver, 10).until(
+        EC.visibility_of_element_located((By.ID, "mensaje_final"))
+    )
+    frase_mostrada = context.driver.find_element(By.ID, "mensaje_final").text.strip()
+    print(f"Mensaje mostrado: '{frase_mostrada}'")
+    assert frase_mostrada == 'Lo siento, has perdido.'
+    time.sleep(3)
