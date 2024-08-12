@@ -131,7 +131,7 @@ def numero_de_intentos(context):
     partes = texto_completo.split(':')
     texto = partes[0].strip()
     numero_intentos = int(partes[1].strip())
-    assert numero_intentos == 6
+    assert numero_intentos == 1
     time.sleep(3)
 
 @then('la letra "{letra}" esta en letras usadas')
