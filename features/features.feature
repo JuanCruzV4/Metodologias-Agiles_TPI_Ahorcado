@@ -25,7 +25,7 @@ Feature: Juego de Ahorcado
       When valido las letras "a" "m" "g" "i" "c" "o"
       Then gano la partida
 
-
+ 
 
 
 

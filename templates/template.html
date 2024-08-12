@@ -24,7 +24,8 @@
             {% if palabra_a_mostrar.replace(" ", "") == palabra_adivinada %}
                 <p id='mensaje_final'><strong>¡Felicidades, has ganado!</strong></p>
             {% else %}
-                <p id='mensaje_final'><strong>Lo siento, has perdido. La palabra era "{{ palabra_adivinada }}".</strong></p>
+                <p id='mensaje_final'><strong>Lo siento, has perdido.</strong></p>
+                <p id='palabra_correcta1'><strong>La palabra era "{{ palabra_adivinada }}".</strong></p>
             {% endif %}
             <a href="{{ url_for('reiniciar') }}" id="reiniciar">Reiniciar</a>
         {% endif %}

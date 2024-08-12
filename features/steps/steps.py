@@ -178,4 +178,3 @@ def ganar_partida(context):
     assert frase_mostrada == '¡Felicidades, has ganado!'
     time.sleep(3)
 
-
