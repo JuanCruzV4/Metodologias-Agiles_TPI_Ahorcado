@@ -6,6 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 import time
+import os
 
 
 @given('launch chrome browser')
@@ -13,9 +14,10 @@ def launchBrowser(context):
     #service = Service(r"C:\Users\juanc\Desktop\Metodologias Agiles\TPI\Metodologias-Agiles\TP-Ahorcado\features\steps\chromedriver.exe") #(r"C:\Users\juanc\Desktop\Metodologias Agiles\TPI\Metodologias-Agiles\TP-Ahorcado\automatic-test\features\steps\chromedriver.exe")
     #context.driver = webdriver.Chrome(service=service)
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
+    if os.getenv('CI'):
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)
     context.driver.get("https://metodologias-agiles-tpi-ahorcado.onrender.com")
 
@@ -46,9 +48,10 @@ def inicio_juego_con_palabra(context, palabra, pista):
     #service = Service(r"C:\Users\juanc\Desktop\Metodologias Agiles\TPI\Metodologias-Agiles\TP-Ahorcado\features\steps\chromedriver.exe")
     #context.driver = webdriver.Chrome(service=service)
     options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
+    if os.getenv('CI'):
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
     context.driver = webdriver.Chrome(options=options)
     context.driver.get(f"https://metodologias-agiles-tpi-ahorcado.onrender.com/inicio?palabra={palabra}&pista={pista}")
     time.sleep(5)

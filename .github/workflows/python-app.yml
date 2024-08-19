@@ -65,6 +65,7 @@ jobs:
       run: |
           set -e
           chmod +x chromedriver
+
     - name: Start Flask Server
       run: |
             set -e
@@ -79,6 +80,8 @@ jobs:
 
     - name: Run Test
       if: always()
+      env:
+        CI: true 
       run: 
           behave -vv features
       continue-on-error: false
@@ -92,7 +95,7 @@ jobs:
         name: codecov-umbrella
 
     - name: Trigger Deploy on Render
-      if: success()  # Solo ejecuta este paso si los tests son exitosos
+      if: success()  
       run: |
           curl -X POST \
           -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
