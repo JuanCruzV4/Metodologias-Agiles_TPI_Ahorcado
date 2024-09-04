@@ -93,7 +93,7 @@ def letra_usada2(context,letra):
     texto = partes[0].strip()
     letra_usada = partes[1].strip()
     assert letra in letra_usada.split()
-    time.sleep(3)
+    time.sleep(4)
 
 
 @given('un juego de Ahorcado con la palabra "{palabra}", "{pista}" para validar letra incorrecta')
